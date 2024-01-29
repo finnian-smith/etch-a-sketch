@@ -5,7 +5,7 @@ let initialGridSize = 16;
 
 const container = document.querySelector(".grid-container");
 
-// Function to create a grid with a specified number of squares per side
+// Create a grid with a specified number of squares per side
 function createGrid(squarePerSide) {
   container.innerHTML = "";
 
@@ -19,7 +19,7 @@ function createGrid(squarePerSide) {
     container.appendChild(square);
   }
 
-  container.addEventListener("mouseover", function (event) {
+  container.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("grid-square")) {
       const backgroundColor = randomColor();
       event.target.style.backgroundColor = `rgb(${backgroundColor})`;
@@ -31,9 +31,9 @@ function createGrid(squarePerSide) {
 createGrid(initialGridSize);
 displayGridSize(initialGridSize);
 
-// Resize grid button event listener
-const button = document.querySelector(".resize-button");
-button.addEventListener("click", function () {
+// Resize grid button
+const resizeButton = document.querySelector(".resize-button");
+resizeButton.addEventListener("click", () => {
   let newSize = prompt(
     "Enter the number of squares per side (Max - " + GRID_MAX_LIMIT + "):"
   );
@@ -48,22 +48,30 @@ button.addEventListener("click", function () {
   }
 });
 
-// each interaction randomises the square’s RGB value
-function randomColor() {
-  const rgbValue = Array.from({ length: 3 }, () =>
-    Math.floor(Math.random() * 266)
-  );
-
-  return rgbValue;
-}
-
-// display current grid size
+// Display current grid size
 function displayGridSize(gridSize) {
   const gridSizeElement = document.querySelector(".grid-size");
   gridSizeElement.textContent = gridSize + "x" + gridSize;
 }
 
-// Add button to index.html -> show grid or not
-// Add event listener to button -> toggle on / off = border: 1px solid #ffffff
-// will probably need to be move styling here and then handle
-// but initially set show grid = false?
+// Randomise the square’s RGB value
+function randomColor() {
+  const rgbValue = Array.from({ length: 3 }, () =>
+    Math.floor(Math.random() * 256)
+  );
+
+  return rgbValue;
+}
+
+// Toggle on / off grid lines
+const gridLineButton = document.querySelector(".grid-line-button");
+gridLineButton.addEventListener("click", () => {
+  container.classList.toggle("grid-lines-on");
+});
+
+// Reset grid
+const resetButton = document.querySelector(".reset-button");
+resetButton.addEventListener("click", () => {
+  createGrid(initialGridSize);
+  displayGridSize(initialGridSize);
+});
