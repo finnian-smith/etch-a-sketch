@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Honk", system-ui;
 }
 
 body {
@@ -9,10 +10,43 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0;
+  background-color: #1f2544;
+}
+
+.header {
+  font-size: 4rem;
+  margin: 10px 0;
+}
+
+.gameplay-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.resize-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resize-button {
+  border-radius: 10px;
+  padding: 8px 16px;
+  background-color: #474f7a;
+  color: #ffd0ec;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.grid-size {
+  font-size: 2rem;
+  margin-top: 10px;
 }
 
 .grid-container {
-  border: 3px solid red;
+  border: 3px solid #ffffff;
   display: flex;
   flex-wrap: wrap;
   width: 80vh;
@@ -20,6 +54,6 @@ body {
 }
 
 .grid-square {
-  border: 1px solid #000;
+  border: 1px solid #ffffff;
   transition: background-color 0.3s ease;
 }
